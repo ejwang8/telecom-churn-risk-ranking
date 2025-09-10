@@ -3,7 +3,7 @@
 I inherited a **basic gradient-boosting baseline** for a telecom churn dataset and had **one day** to:
 1) harden the **data pipeline** (joins, leakage/missingness, encodings),
 2) improve **model quality** with interpretable baselines and calibration, and
-3) translate scores into an **actionable business plan** (ranked top-K outreach + ops workflow).
+3) translate scores into an **actionable business plan** (ranked top-K outreach).
 
 **Goal.** Produce a **ranked list** of customers by churn risk that an ops team can act on immediately, and evaluate impact with **PR-AUC** and **precision@K** (which map to finite outreach capacity).
 
