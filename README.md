@@ -68,7 +68,7 @@ To run on your machine:
 
 ---
 
-## Data schema (neutral)
+## Data schema
 > Column names listed for clarity with generic descriptions.
 
 ### Demographics
