@@ -2,15 +2,18 @@
 
 Time-boxed churn modeling case study for a telecom dataset. Goal: produce an **actionable ranked list** of customers by churn risk and show impact with **PR-AUC** and **precision@K**.
 
+describe challenge here [help]
+include the markdown table with columns and general descriptions
+
 ## Results (headline)
 - PR-AUC improved from 0.258 → 0.277  
 - Precision@10% improved from 26.1% → 31.0% (recall ~39%)  
 - Ranked list enables ~3.9× lift at top 10% vs. random outreach  
-(Details in slides.)  [Slides: `Wang_DS_Challenge.pdf`]  ← update if you rename
+(Details in slides.)  [Slides: `mock-deliverable.pdf`]
 
 ## What’s inside
-- `Wang_DS_Challenge.ipynb` — cleaned pipeline, model selection, eval
-- `slides/exec-summary.pdf` — 3–5 slides for non-technical audience
+- `pipeline.ipynb` — cleaned pipeline, model selection, eval
+- `mock-deliverable.pdf` — 4 slide PowerPoint for non-technical audience
 - (Dataset not included.)
 
 ## Scope & timebox
