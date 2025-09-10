@@ -1,2 +1,27 @@
-# telecom-churn-risk-ranking
-Time-boxed (one day) telecom churn case study: clean pipeline, interpretable model, and ranked top-K outreach list with improved PR-AUC and precision@K
+# Telecom Churn Risk Ranking
+
+Time-boxed churn modeling case study for a telecom dataset. Goal: produce an **actionable ranked list** of customers by churn risk and show impact with **PR-AUC** and **precision@K**.
+
+## Results (headline)
+- PR-AUC improved from 0.258 → 0.277  
+- Precision@10% improved from 26.1% → 31.0% (recall ~39%)  
+- Ranked list enables ~3.9× lift at top 10% vs. random outreach  
+(Details in slides.)  [Slides: `Wang_DS_Challenge.pdf`]  ← update if you rename
+
+## What’s inside
+- `Wang_DS_Challenge.ipynb` — cleaned pipeline, model selection, eval
+- `slides/exec-summary.pdf` — 3–5 slides for non-technical audience
+- (Dataset not included.)
+
+## Scope & timebox
+Completed in a day. Emphasis on clarity, explainability, and business action. Extended ideas are in **Next steps**.
+
+## Approach
+- Fix leakage & missingness; encode Unknowns; drop redundant features
+- Compare simple baselines; select interpretable model (e.g., Logistic Regression)
+- Optimize for PR-AUC and **precision@K**; deliver ranked list for outreach
+
+## Next steps
+- Calibration & probability thresholds for ops
+- Hyperparameter tuning (e.g., XGBoost/CatBoost)
+- Drift monitoring; monthly rescoring
