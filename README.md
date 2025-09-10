@@ -1,6 +1,6 @@
 # Telecom Churn Risk Ranking
 
-I inherited a **basic gradient-boosting baseline** for a telecom churn dataset and had **one day** to:
+I inherited a **basic gradient-boosting baseline** for a telecom churn dataset and had a day to:
 1) harden the **data pipeline** (joins, leakage/missingness, encodings),
 2) improve **model quality** with interpretable baselines and calibration, and
 3) translate scores into an **actionable business plan** (ranked top-K outreach).
@@ -25,11 +25,11 @@ Details in slides → `mock-deliverable.pdf`.
 ---
 
 ## Scope & timebox
-Completed in **~1 day**. Emphasis on clarity, explainability, and business action. Production hardening & extensions are listed in **Next steps**.
+Completed in a day. Emphasis on clarity, explainability, and business action. Production hardening & extensions are listed in **Next steps**.
 
 ---
 
-## Approach (one-day cut)
+## Approach
 **Pipeline**
 - Join “Demographics” + “Services” on customer ID; check row loss & duplicates.
 - Fix **leakage** (drop post-outcome columns), handle **missingness**, standardize categoricals (Unknown bucket), and remove redundant features.
@@ -37,13 +37,14 @@ Completed in **~1 day**. Emphasis on clarity, explainability, and business actio
 
 **Modeling**
 - Establish interpretable **baseline** (Logistic Regression with regularization & class weights).
-- Compare to inherited **GBM**; perform light tuning within time budget.
-- Emphasize **PR-AUC** and **precision@K**; generate **calibrated probabilities** for trustworthy triage.
-- Deliver **ranked top-K** list tied to outreach capacity (e.g., 5–15% of book).
+- Compare to inherited **GBM**; perform light tuning within the one-day budget.
+- Emphasize **PR-AUC** and **precision@K**; generate **calibrated probabilities** for trustworthy prioritization.
+- Deliver a **ranked top-K list** aligned with weekly contact capacity (e.g., 5–15% of the customer base).
 
-**Evaluation for Ops**
-- Report PR curves, precision@K table, and confusion metrics at selected thresholds.
-- Sanity checks for **segment fairness** and **site/manager confounds** where relevant.
+**Evaluation (decision-focused)**
+- Report **PR curves**, a **precision@K table** (for K = 5%, 10%, 15%), and **confusion metrics** at selected thresholds.
+- Include a brief **calibration check** (binned predicted vs. observed churn) to confirm probabilities are usable for prioritizing outreach.
+- Sanity checks: leakage guards, class balance.
 
 ---
 
@@ -65,13 +66,10 @@ To run on your machine:
    to point to your local file.
 3) Run all cells.
 
-> Tip: For portability, you can replace the literal path with a relative path like `data/input.xlsx`
-> (and keep real data out of git), or read from an environment variable (see code comment in the notebook).
-
 ---
 
 ## Data schema (neutral)
-> Column names listed for clarity; descriptions are generic and not copied from any third-party materials.
+> Column names listed for clarity with generic descriptions.
 
 ### Demographics
 
@@ -109,13 +107,4 @@ To run on your machine:
 | **MRC_TotalCharge** | Final total monthly charge billed to the customer. |
 
 > **Target label:** The churn outcome used for modeling exists in the source data but is not redistributed here. When running locally, include a churn label (Yes/No) or adapt the notebook to your label.
-
----
-
-## Next steps
-- **Calibration & thresholds:** finalize operating points per team capacity (e.g., 5%, 10%, 15%).
-- **Richer features:** tenure deltas, billing volatility, recency of support tickets, add-on changes.
-- **Modeling:** systematic hyper-parameter search for GBM/CatBoost; add uplift modeling to target interventions.
-- **Monitoring:** data drift, calibration drift, and precision@K stability; monthly retrain cadence.
-- **Governance:** bias checks across key segments; reason codes for human review.
 
